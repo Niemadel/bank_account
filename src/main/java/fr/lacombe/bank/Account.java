@@ -9,9 +9,12 @@ public class Account {
 
     }
 
+    public void withdraw(int amount) {
+        transactions = new Transactions(-amount);
+    }
+
     public int getStatement() {
         return transactions.getAmount();
     }
-
 
 }

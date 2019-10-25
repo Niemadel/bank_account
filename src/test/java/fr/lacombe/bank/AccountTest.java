@@ -15,4 +15,10 @@ public class AccountTest {
         assertThat(account.getStatement()).isEqualTo(100);
     }
 
+    @Test
+    void withdraw_of_200_on_account_delete_200_on_account() {
+        account.withdraw(200);
+
+        assertThat(account.getStatement()).isEqualTo(-200);
+    }
 }
