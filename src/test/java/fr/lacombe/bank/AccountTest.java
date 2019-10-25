@@ -21,18 +21,11 @@ public class AccountTest {
     }
 
     @Test
-    void withdraw_of_200_on_account_delete_200_on_account() {
-        account.withdraw(Amount.of(200));
-        operationsAmount.add(Amount.of(-200));
-
-        assertThat(account.getStatement()).isEqualTo(operationsAmount);
-    }
-
-    @Test
     void deposit_of_100_plus_deposit_of_50_save_150_on_account() {
         account.deposit(Amount.of(100));
         account.deposit(Amount.of(50));
-        operationsAmount.add(Amount.of(150));
+        operationsAmount.add(Amount.of(100));
+        operationsAmount.add(Amount.of(50));
 
         assertThat(account.getStatement()).isEqualTo(operationsAmount);
     }

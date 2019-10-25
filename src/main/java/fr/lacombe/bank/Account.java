@@ -10,9 +10,6 @@ public class Account {
         transactions.add(amount);
     }
 
-    public void withdraw(Amount amount) {
-        transactions.add(amount);
-    }
 
     public List<Amount> getStatement() {
         return transactions.getOperationsAmount();
