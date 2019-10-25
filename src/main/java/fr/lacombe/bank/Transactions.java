@@ -1,14 +1,18 @@
 package fr.lacombe.bank;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Transactions {
 
-    private int amount;
+    private List<Amount> operationsAmount = new ArrayList<>();
 
-    public Transactions(int amount) {
-        this.amount = amount;
+    public void add(Amount amount) {
+        operationsAmount.add(amount);
     }
 
-    public int getAmount() {
-        return amount;
+    public List<Amount> getOperationsAmount() {
+        return operationsAmount;
     }
+
 }

@@ -1,20 +1,21 @@
 package fr.lacombe.bank;
 
+import java.util.List;
+
 public class Account {
 
-    private Transactions transactions;
+    private Transactions transactions = new Transactions();
 
-    public void deposit(int amount) {
-        transactions = new Transactions(amount);
-
+    public void deposit(Amount amount) {
+        transactions.add(amount);
     }
 
-    public void withdraw(int amount) {
-        transactions = new Transactions(-amount);
+    public void withdraw(Amount amount) {
+        transactions.add(amount);
     }
 
-    public int getStatement() {
-        return transactions.getAmount();
+    public List<Amount> getStatement() {
+        return transactions.getOperationsAmount();
     }
 
 }
