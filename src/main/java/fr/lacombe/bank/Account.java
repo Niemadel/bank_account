@@ -2,14 +2,16 @@ package fr.lacombe.bank;
 
 public class Account {
 
-    private AccountHistory accountHistory;
-
-    public Account(AccountHistory accountHistory) {
-        this.accountHistory = accountHistory;
-    }
+    private Transactions transactions;
 
     public void deposit(int amount) {
-        accountHistory.addDeposit(amount);
+        transactions = new Transactions(amount);
+
     }
+
+    public int getStatement() {
+        return transactions.getAmount();
+    }
+
 
 }
