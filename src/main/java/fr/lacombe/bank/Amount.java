@@ -1,17 +1,26 @@
 package fr.lacombe.bank;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Amount {
 
-    private int money;
+    private BigDecimal money;
 
-    public Amount(int money) {
+    public Amount(BigDecimal money) {
         this.money = money;
     }
 
-    public static Amount of(int money) {
+    public static Amount of(BigDecimal money) {
         return new Amount(money);
+    }
+
+    public Amount add(Amount amountDeposited) {
+        return new Amount(money.add(amountDeposited.money));
+    }
+
+    Amount substrac(Amount amountWithdrawn) {
+        return new Amount(money.subtract(amountWithdrawn.money));
     }
 
     @Override
@@ -19,18 +28,11 @@ public class Amount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Amount amount = (Amount) o;
-        return money == amount.money;
+        return Objects.equals(money, amount.money);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(money);
-    }
-
-    @Override
-    public String toString() {
-        return "Amount{" +
-                "money=" + money +
-                '}';
     }
 }

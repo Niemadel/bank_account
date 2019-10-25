@@ -2,31 +2,40 @@ package fr.lacombe.bank;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AccountTest {
 
-    Account account = new Account();
-    public List<Amount> operationsAmount = new ArrayList<>();
+    Amount amount100 = Amount.of(new BigDecimal(100));
+    Amount amount50 = Amount.of(new BigDecimal(50));
 
     @Test
     void deposit_of_100_on_account_save_100_on_account() {
-        account.deposit(Amount.of(100));
-        operationsAmount.add(Amount.of(100));
+        Account account = new Account();
 
-        assertThat(account.getStatement()).isEqualTo(operationsAmount);
+        account.deposit(amount100);
+
+        assertThat(account.getBalance()).isEqualTo(amount100);
     }
 
     @Test
     void deposit_of_100_plus_deposit_of_50_save_150_on_account() {
-        account.deposit(Amount.of(100));
-        account.deposit(Amount.of(50));
-        operationsAmount.add(Amount.of(100));
-        operationsAmount.add(Amount.of(50));
+        Account account = new Account();
 
-        assertThat(account.getStatement()).isEqualTo(operationsAmount);
+        account.deposit(amount100);
+        account.deposit(amount50);
+
+        assertThat(account.getBalance()).isEqualTo(Amount.of(new BigDecimal(150)));
+    }
+
+    @Test
+    void withdraw_of_50_return_statement_of_minus_50() {
+        Account account = new Account();
+
+        account.withdraw(amount50);
+
+        assertThat(account.getBalance()).isEqualTo(Amount.of(new BigDecimal(-50)));
     }
 }

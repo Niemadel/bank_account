@@ -5,14 +5,10 @@ import java.util.List;
 
 public class Transactions {
 
-    private List<Amount> operationsAmount = new ArrayList<>();
+    private List<OperationLine> transactions = new ArrayList<>();
 
-    public void add(Amount amount) {
-        operationsAmount.add(amount);
-    }
-
-    public List<Amount> getOperationsAmount() {
-        return operationsAmount;
+    public void add(OperationLine operationLine) {
+        transactions.add(operationLine);
     }
 
 }
