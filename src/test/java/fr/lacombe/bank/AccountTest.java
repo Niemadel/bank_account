@@ -3,6 +3,7 @@ package fr.lacombe.bank;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,6 +11,8 @@ public class AccountTest {
 
     Amount amount100 = Amount.of(new BigDecimal(100));
     Amount amount50 = Amount.of(new BigDecimal(50));
+
+    LocalDate operationDate = new DateProvider().getNow();
 
     @Test
     void deposit_of_100_on_account_save_100_on_account() {
@@ -62,7 +65,7 @@ public class AccountTest {
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance() {
         Account account = new Account();
-        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100);
+        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100, operationDate);
         Transactions expectedTransactions = new Transactions();
         expectedTransactions.add(expectedTransactionLine);
 
@@ -72,4 +75,17 @@ public class AccountTest {
 
     }
 
+    @Test
+    void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance_and_date() {
+        Account account = new Account();
+        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100, operationDate);
+        Transactions expectedTransactions = new Transactions();
+        expectedTransactions.add(expectedTransactionLine);
+
+
+        account.deposit(amount100);
+
+        assertThat(account.getTransactions()).isEqualTo(expectedTransactions);
+
+    }
 }
