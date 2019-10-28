@@ -10,17 +10,21 @@ public class Account {
 
     public void deposit(Amount amount) {
         balance = this.balance.add(amount);
-        OperationLine operationLine = new OperationLine(OperationType.DEPOSIT, amount);
-        transactions.add(operationLine);
+        TransactionLine transactionLine = new TransactionLine(OperationType.DEPOSIT, amount);
+        transactions.add(transactionLine);
     }
 
     public void withdraw(Amount amount) {
         balance = this.balance.substrac(amount);
-        OperationLine operationLine = new OperationLine(OperationType.WITHDRAW, amount);
-        transactions.add(operationLine);
+        TransactionLine transactionLine = new TransactionLine(OperationType.WITHDRAW, amount);
+        transactions.add(transactionLine);
     }
 
     public Amount getBalance() {
         return balance;
+    }
+
+    public Transactions getTransactions() {
+        return transactions;
     }
 }

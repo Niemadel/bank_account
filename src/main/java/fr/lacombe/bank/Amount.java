@@ -19,7 +19,7 @@ public class Amount {
         return new Amount(money.add(amountDeposited.money));
     }
 
-    Amount substrac(Amount amountWithdrawn) {
+    public Amount substrac(Amount amountWithdrawn) {
         return new Amount(money.subtract(amountWithdrawn.money));
     }
 
