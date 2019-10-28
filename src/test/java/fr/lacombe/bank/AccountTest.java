@@ -48,4 +48,14 @@ public class AccountTest {
 
         assertThat(account.getBalance()).isEqualTo(Amount.of(new BigDecimal(-200)));
     }
+
+    @Test
+    void withdraw_of_100_and_deposit_of_50_return_minus_minus50() {
+        Account account = new Account();
+
+        account.withdraw(Amount.of(new BigDecimal(100)));
+        account.deposit(Amount.of(new BigDecimal(50)));
+
+        assertThat(account.getBalance()).isEqualTo(Amount.of(new BigDecimal(-50)));
+    }
 }
