@@ -16,7 +16,7 @@ public class AccountTest {
     LocalDate operationDate = new DateProvider().getNow();
 
     @Test
-    void deposit_of_100_on_account_save_100_on_account() {
+    void deposit_of_100_return_balance_of_100() {
         Account account = new Account();
 
         account.deposit(amount100);
@@ -25,7 +25,7 @@ public class AccountTest {
     }
 
     @Test
-    void deposit_of_100_plus_deposit_of_50_save_150_on_account() {
+    void deposit_of_100_plus_deposit_of_50_return_balance_of_150() {
         Account account = new Account();
 
         account.deposit(amount100);
@@ -35,7 +35,7 @@ public class AccountTest {
     }
 
     @Test
-    void withdraw_of_50_return_statement_of_minus_50() {
+    void withdraw_of_50_return_balance_of_minus_50() {
         Account account = new Account();
 
         account.withdraw(amount50);
@@ -44,7 +44,7 @@ public class AccountTest {
     }
 
     @Test
-    void withdraw_of_120_and_withdraw_of_80_return_statement_of_minus_200() {
+    void withdraw_of_120_and_withdraw_of_80_return_balance_of_minus_200() {
         Account account = new Account();
 
         account.withdraw(Amount.of(new BigDecimal(120)));
@@ -54,7 +54,7 @@ public class AccountTest {
     }
 
     @Test
-    void withdraw_of_100_and_deposit_of_50_return_statement_of_minus50() {
+    void withdraw_of_100_and_deposit_of_50_return_balance_of_minus50() {
         Account account = new Account();
 
         account.withdraw(Amount.of(new BigDecimal(100)));
