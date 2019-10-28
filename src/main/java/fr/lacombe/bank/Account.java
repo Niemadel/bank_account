@@ -18,8 +18,12 @@ public class Account {
 
     public void withdraw(Amount amount) {
         balance = this.balance.substrac(amount);
-        TransactionLine transactionLine = new TransactionLine(OperationType.WITHDRAW, amount, balance, operationDate);
-        transactions.add(transactionLine);
+        if (balance.notOverDraft()) {
+            TransactionLine transactionLine = new TransactionLine(OperationType.WITHDRAW, amount, balance, operationDate);
+            transactions.add(transactionLine);
+        } else {
+            throw new UnsupportedOperationException();
+        }
     }
 
     public Amount getBalance() {
@@ -29,4 +33,6 @@ public class Account {
     public Transactions getTransactions() {
         return transactions;
     }
+
+
 }

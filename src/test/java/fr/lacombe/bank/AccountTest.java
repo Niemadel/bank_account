@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AccountTest {
 
@@ -82,10 +83,28 @@ public class AccountTest {
         Transactions expectedTransactions = new Transactions();
         expectedTransactions.add(expectedTransactionLine);
 
-
         account.deposit(amount100);
 
         assertThat(account.getTransactions()).isEqualTo(expectedTransactions);
 
     }
+
+    @Test
+    void withdraw_of_400_set_balance_under_minus_300_so_withdraw_is_refused() {
+        Account account = new Account();
+
+        assertThrows(UnsupportedOperationException.class,
+                () -> account.withdraw(Amount.of(new BigDecimal(400))));
+    }
+
+    @Test
+    void deposit_of_100_then_withdraw_of_600_set_balance_under_minus_300_so_withdraw_is_refused() {
+        Account account = new Account();
+        account.deposit(amount100);
+
+        assertThrows(UnsupportedOperationException.class,
+                () -> account.withdraw(Amount.of(new BigDecimal(600))));
+    }
+
+
 }

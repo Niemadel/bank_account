@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Amount {
 
     private BigDecimal money;
+    private static final BigDecimal OVER_DRAFT_LIMIT = new BigDecimal(-300);
 
     public Amount(BigDecimal money) {
         this.money = money;
@@ -23,6 +24,10 @@ public class Amount {
         return new Amount(money.subtract(amountWithdrawn.money));
     }
 
+    public boolean notOverDraft() {
+        return money.compareTo(OVER_DRAFT_LIMIT) > 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -35,4 +40,6 @@ public class Amount {
     public int hashCode() {
         return Objects.hash(money);
     }
+
+
 }
