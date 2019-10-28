@@ -12,6 +12,9 @@ public class AccountTest {
 
     Amount amount100 = Amount.of(new BigDecimal(100));
     Amount amount50 = Amount.of(new BigDecimal(50));
+    Amount amount120 = Amount.of(new BigDecimal(120));
+    Amount amount80 = Amount.of(new BigDecimal(80));
+
 
     LocalDate operationDate = new DateProvider().getNow();
 
@@ -47,8 +50,8 @@ public class AccountTest {
     void withdraw_of_120_and_withdraw_of_80_return_balance_of_minus_200() {
         Account account = new Account();
 
-        account.withdraw(Amount.of(new BigDecimal(120)));
-        account.withdraw(Amount.of(new BigDecimal(80)));
+        account.withdraw(amount120);
+        account.withdraw(amount80);
 
         assertThat(account.getBalance()).isEqualTo(Amount.of(new BigDecimal(-200)));
     }
