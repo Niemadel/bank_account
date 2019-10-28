@@ -62,7 +62,7 @@ public class AccountTest {
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance() {
         Account account = new Account();
-        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100);
+        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100);
         Transactions expectedTransactions = new Transactions();
         expectedTransactions.add(expectedTransactionLine);
 
@@ -70,6 +70,6 @@ public class AccountTest {
 
         assertThat(account.getTransactions()).isEqualTo(expectedTransactions);
 
-
     }
+
 }
