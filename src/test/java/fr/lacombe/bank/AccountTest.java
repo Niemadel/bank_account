@@ -57,8 +57,8 @@ public class AccountTest {
     void withdraw_of_100_and_deposit_of_50_return_balance_of_minus50() {
         Account account = new Account();
 
-        account.withdraw(Amount.of(new BigDecimal(100)));
-        account.deposit(Amount.of(new BigDecimal(50)));
+        account.withdraw(amount100);
+        account.deposit(amount50);
 
         assertThat(account.getBalance()).isEqualTo(Amount.of(new BigDecimal(-50)));
     }
