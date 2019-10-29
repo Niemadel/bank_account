@@ -17,6 +17,22 @@ public class TransactionLine {
         this.operationDate = operationDate;
     }
 
+    public OperationType formattedOperationType() {
+        return operationType;
+    }
+
+    public String formattedAmount() {
+        return amount.toString();
+    }
+
+    public String formattedBalance() {
+        return balance.toString();
+    }
+
+    public String formattedOperationDate() {
+        return operationDate.toString();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -8,4 +8,5 @@ public class DateProviderMock implements DateProvider {
     public LocalDate date() {
         return LocalDate.of(2019, 10, 29);
     }
+
 }

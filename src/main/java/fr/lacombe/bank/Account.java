@@ -7,6 +7,7 @@ public class Account {
     private Transactions transactions = new Transactions();
     private Amount balance = Amount.of(new BigDecimal(0));
     private DateProvider dateProvider;
+    private Printer printer = new Printer();
 
     public Account(DateProvider dateProvider) {
         this.dateProvider = dateProvider;
@@ -19,7 +20,7 @@ public class Account {
     }
 
     public void withdraw(Amount amount) {
-        balance = this.balance.substrac(amount);
+        balance = this.balance.subtract(amount);
         if (balance.notOverDraft()) {
             TransactionLine transactionLine = new TransactionLine(OperationType.WITHDRAW, amount, balance, dateProvider.date());
             transactions.add(transactionLine);
@@ -34,6 +35,10 @@ public class Account {
 
     public Transactions getTransactions() {
         return transactions;
+    }
+
+    public String printTransactions() {
+        return printer.print(transactions);
     }
 
 

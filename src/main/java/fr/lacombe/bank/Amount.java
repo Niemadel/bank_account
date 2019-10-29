@@ -20,12 +20,17 @@ public class Amount {
         return new Amount(money.add(amountDeposited.money));
     }
 
-    public Amount substrac(Amount amountWithdrawn) {
+    public Amount subtract(Amount amountWithdrawn) {
         return new Amount(money.subtract(amountWithdrawn.money));
     }
 
     public boolean notOverDraft() {
         return money.compareTo(OVER_DRAFT_LIMIT) > 0;
+    }
+
+    @Override
+    public String toString() {
+        return " " + money;
     }
 
     @Override
