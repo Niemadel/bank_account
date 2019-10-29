@@ -8,6 +8,10 @@ public class Account {
     private Amount balance = Amount.of(BigDecimal.ZERO);
     private DateProvider dateProvider;
 
+    public Account() {
+        dateProvider = () -> null;
+    }
+
     public Account(DateProvider dateProvider) {
         this.dateProvider = dateProvider;
     }

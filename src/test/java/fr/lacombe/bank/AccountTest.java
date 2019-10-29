@@ -20,7 +20,7 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_return_balance_of_100() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
 
         account.deposit(amount100);
 
@@ -29,7 +29,7 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_plus_deposit_of_50_return_balance_of_150() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
 
         account.deposit(amount100);
         account.deposit(amount50);
@@ -39,7 +39,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_50_return_balance_of_minus_50() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
 
         account.withdraw(amount50);
 
@@ -48,7 +48,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_120_and_withdraw_of_80_return_balance_of_minus_200() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
 
         account.withdraw(amount120);
         account.withdraw(amount80);
@@ -58,7 +58,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_100_and_deposit_of_50_return_balance_of_minus50() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
 
         account.withdraw(amount100);
         account.deposit(amount50);
@@ -79,7 +79,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_400_set_balance_under_minus_300_so_withdraw_is_refused() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
 
         assertThrows(UnsupportedOperationException.class,
                 () -> account.withdraw(Amount.of(new BigDecimal(400))));
@@ -87,7 +87,7 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_then_withdraw_of_600_set_balance_under_minus_300_so_withdraw_is_refused() {
-        Account account = new Account(dateProviderMock);
+        Account account = new Account();
         account.deposit(amount100);
 
         assertThrows(UnsupportedOperationException.class,
