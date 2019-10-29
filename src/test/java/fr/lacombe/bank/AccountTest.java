@@ -15,12 +15,12 @@ public class AccountTest {
     Amount amount120 = Amount.of(new BigDecimal(120));
     Amount amount80 = Amount.of(new BigDecimal(80));
 
-
-    LocalDate operationDate = new DateProvider().getNow();
+    DateProviderMock dateProviderMock = new DateProviderMock();
+    LocalDate operationDate = dateProviderMock.date();
 
     @Test
     void deposit_of_100_return_balance_of_100() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
 
         account.deposit(amount100);
 
@@ -29,7 +29,7 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_plus_deposit_of_50_return_balance_of_150() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
 
         account.deposit(amount100);
         account.deposit(amount50);
@@ -39,7 +39,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_50_return_balance_of_minus_50() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
 
         account.withdraw(amount50);
 
@@ -48,7 +48,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_120_and_withdraw_of_80_return_balance_of_minus_200() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
 
         account.withdraw(amount120);
         account.withdraw(amount80);
@@ -58,7 +58,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_100_and_deposit_of_50_return_balance_of_minus50() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
 
         account.withdraw(amount100);
         account.deposit(amount50);
@@ -68,7 +68,7 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
         TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100, operationDate);
         Transactions expectedTransactions = new Transactions();
         expectedTransactions.add(expectedTransactionLine);
@@ -81,7 +81,7 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance_and_date() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
         TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100, operationDate);
         Transactions expectedTransactions = new Transactions();
         expectedTransactions.add(expectedTransactionLine);
@@ -94,7 +94,7 @@ public class AccountTest {
 
     @Test
     void withdraw_of_400_set_balance_under_minus_300_so_withdraw_is_refused() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
 
         assertThrows(UnsupportedOperationException.class,
                 () -> account.withdraw(Amount.of(new BigDecimal(400))));
@@ -102,12 +102,11 @@ public class AccountTest {
 
     @Test
     void deposit_of_100_then_withdraw_of_600_set_balance_under_minus_300_so_withdraw_is_refused() {
-        Account account = new Account();
+        Account account = new Account(dateProviderMock);
         account.deposit(amount100);
 
         assertThrows(UnsupportedOperationException.class,
                 () -> account.withdraw(Amount.of(new BigDecimal(600))));
     }
-
 
 }

@@ -2,9 +2,8 @@ package fr.lacombe.bank;
 
 import java.time.LocalDate;
 
-public class DateProvider {
+public interface DateProvider {
 
-    public LocalDate getNow() {
-        return LocalDate.now();
-    }
+    LocalDate date();
+
 }
