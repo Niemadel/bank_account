@@ -16,7 +16,7 @@ public class AccountTest {
 
     Printer printer = new Printer();
 
-    DateProviderMock dateProviderMock = new DateProviderMock();
+    DateProvider dateProviderMock = new DateProviderMock();
 
     @Test
     void deposit_of_100_return_balance_of_100() {
