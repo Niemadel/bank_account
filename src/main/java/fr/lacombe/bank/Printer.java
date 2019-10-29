@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Printer {
 
-    public String print(Transactions transactions) {
+    public String print(Account account) {
 
         StringBuilder AllTransactions = new StringBuilder();
-        List<TransactionLine> transactionLines = transactions.getTransactions();
+        List<TransactionLine> transactionLines = account.getTransactions().getTransactionsList();
         for (TransactionLine transactionLine : transactionLines) {
             AllTransactions.append(transactionLine.formattedOperationType())
                     .append(transactionLine.formattedAmount())

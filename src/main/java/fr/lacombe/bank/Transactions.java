@@ -12,7 +12,7 @@ public class Transactions {
         transactions.add(transactionLine);
     }
 
-    public List<TransactionLine> getTransactions() {
+    public List<TransactionLine> getTransactionsList() {
         return transactions;
     }
 

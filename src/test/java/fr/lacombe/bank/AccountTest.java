@@ -3,7 +3,6 @@ package fr.lacombe.bank;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,8 +14,9 @@ public class AccountTest {
     Amount amount120 = Amount.of(new BigDecimal(120));
     Amount amount80 = Amount.of(new BigDecimal(80));
 
+    Printer printer = new Printer();
+
     DateProviderMock dateProviderMock = new DateProviderMock();
-    LocalDate operationDate = dateProviderMock.date();
 
     @Test
     void deposit_of_100_return_balance_of_100() {
@@ -67,28 +67,13 @@ public class AccountTest {
     }
 
     @Test
-    void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance() {
-        Account account = new Account(dateProviderMock);
-        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100, operationDate);
-        Transactions expectedTransactions = new Transactions();
-        expectedTransactions.add(expectedTransactionLine);
-
-        account.deposit(amount100);
-
-        assertThat(account.getTransactions()).isEqualTo(expectedTransactions);
-
-    }
-
-    @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance_and_date() {
         Account account = new Account(dateProviderMock);
-        TransactionLine expectedTransactionLine = new TransactionLine(OperationType.DEPOSIT, amount100, amount100, operationDate);
-        Transactions expectedTransactions = new Transactions();
-        expectedTransactions.add(expectedTransactionLine);
+        String expectedTransactionStatement = "DEPOSIT 100 balance 100 date 2019-10-29\n";
 
         account.deposit(amount100);
 
-        assertThat(account.getTransactions()).isEqualTo(expectedTransactions);
+        assertThat(printer.print(account)).isEqualTo(expectedTransactionStatement);
 
     }
 

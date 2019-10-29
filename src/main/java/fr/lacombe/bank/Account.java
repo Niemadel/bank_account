@@ -7,7 +7,6 @@ public class Account {
     private Transactions transactions = new Transactions();
     private Amount balance = Amount.of(new BigDecimal(0));
     private DateProvider dateProvider;
-    private Printer printer = new Printer();
 
     public Account(DateProvider dateProvider) {
         this.dateProvider = dateProvider;
@@ -36,10 +35,5 @@ public class Account {
     public Transactions getTransactions() {
         return transactions;
     }
-
-    public String printTransactions() {
-        return printer.print(transactions);
-    }
-
 
 }
