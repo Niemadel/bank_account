@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Account {
 
     private Transactions transactions = new Transactions();
-    private Amount balance = Amount.of(new BigDecimal(0));
+    private Amount balance = Amount.of(BigDecimal.ZERO);
     private DateProvider dateProvider;
 
     public Account(DateProvider dateProvider) {
