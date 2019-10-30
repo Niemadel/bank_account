@@ -69,11 +69,11 @@ public class AccountTest {
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance_and_date() {
         Account account = new Account(dateProviderMock);
-        String expectedTransactionStatement = "DEPOSIT 100 balance 100 date 2019-10-29\n";
+        String expectedOperationStatement = "DEPOSIT 100 balance 100 date 2019-10-29\n";
 
         account.deposit(amount100);
 
-        assertThat(printer.print(account)).isEqualTo(expectedTransactionStatement);
+        assertThat(printer.print(account)).isEqualTo(expectedOperationStatement);
 
     }
 

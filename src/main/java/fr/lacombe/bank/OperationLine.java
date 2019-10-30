@@ -3,14 +3,14 @@ package fr.lacombe.bank;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class TransactionLine {
+public class OperationLine {
 
     private OperationType operationType;
     private Amount amount;
     private Amount balance;
     private LocalDate operationDate;
 
-    public TransactionLine(OperationType operationType, Amount amount, Amount balance, LocalDate operationDate) {
+    public OperationLine(OperationType operationType, Amount amount, Amount balance, LocalDate operationDate) {
         this.operationType = operationType;
         this.amount = amount;
         this.balance = balance;
@@ -37,7 +37,7 @@ public class TransactionLine {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TransactionLine that = (TransactionLine) o;
+        OperationLine that = (OperationLine) o;
         return operationType == that.operationType &&
                 Objects.equals(amount, that.amount) &&
                 Objects.equals(balance, that.balance) &&

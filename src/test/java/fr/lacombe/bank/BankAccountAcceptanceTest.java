@@ -17,14 +17,14 @@ public class BankAccountAcceptanceTest {
     @Test
     void deposit_of_100_and_withdraw_of_50_return_statements_with_operation_type_and_amount_and_balance_and_date() {
         Account account = new Account(dateProviderMock);
-        String expectedTransactionsStatements =
+        String expectedOperationsStatements =
                 "DEPOSIT 100 balance 100 date 2019-10-29\n" +
                         "WITHDRAW 50 balance 50 date 2019-10-29\n";
 
         account.deposit(amount100);
         account.withdraw(amount50);
 
-        assertThat(printer.print(account)).isEqualTo(expectedTransactionsStatements);
+        assertThat(printer.print(account)).isEqualTo(expectedOperationsStatements);
 
     }
 }

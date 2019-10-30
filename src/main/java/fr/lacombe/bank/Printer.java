@@ -6,18 +6,18 @@ public class Printer {
 
     public String print(Account account) {
 
-        StringBuilder AllTransactions = new StringBuilder();
-        List<TransactionLine> transactionLines = account.getTransactions().getTransactionsList();
-        for (TransactionLine transactionLine : transactionLines) {
-            AllTransactions.append(transactionLine.formattedOperationType())
-                    .append(transactionLine.formattedAmount())
+        StringBuilder AllOperations = new StringBuilder();
+        List<OperationLine> operationLines = account.getOperations().getOperationsList();
+        for (OperationLine operationLine : operationLines) {
+            AllOperations.append(operationLine.formattedOperationType())
+                    .append(operationLine.formattedAmount())
                     .append(" balance")
-                    .append(transactionLine.formattedBalance())
+                    .append(operationLine.formattedBalance())
                     .append(" date ")
-                    .append(transactionLine.formattedOperationDate())
+                    .append(operationLine.formattedOperationDate())
                     .append("\n");
         }
 
-        return AllTransactions.toString();
+        return AllOperations.toString();
     }
 }
