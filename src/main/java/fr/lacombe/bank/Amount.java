@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Amount {
 
     private BigDecimal money;
-    private static final BigDecimal OVER_DRAFT_LIMIT = new BigDecimal(-300);
+    private static final BigDecimal OVERDRAFT_LIMIT = new BigDecimal(-300);
 
     public Amount(BigDecimal money) {
         this.money = money;
@@ -25,7 +25,7 @@ public class Amount {
     }
 
     public boolean notOverDraft() {
-        return money.compareTo(OVER_DRAFT_LIMIT) > 0;
+        return money.compareTo(OVERDRAFT_LIMIT) > 0;
     }
 
     @Override

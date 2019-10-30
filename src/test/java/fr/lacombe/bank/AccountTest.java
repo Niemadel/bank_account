@@ -14,8 +14,6 @@ public class AccountTest {
     Amount amount120 = Amount.of(new BigDecimal(120));
     Amount amount80 = Amount.of(new BigDecimal(80));
 
-    Printer printer = new Printer();
-
     DateProvider dateProviderMock = new DateProviderMock();
 
     @Test
@@ -69,6 +67,7 @@ public class AccountTest {
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance_and_date() {
         Account account = new Account(dateProviderMock);
+        Printer printer = new Printer();
         String expectedOperationStatement = "DEPOSIT 100 balance 100 date 2019-10-29T10:46\n";
 
         account.deposit(amount100);
