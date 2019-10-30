@@ -69,7 +69,7 @@ public class AccountTest {
     @Test
     void deposit_of_100_return_statement_with_operation_type_and_amount_and_balance_and_date() {
         Account account = new Account(dateProviderMock);
-        String expectedOperationStatement = "DEPOSIT 100 balance 100 date 2019-10-29\n";
+        String expectedOperationStatement = "DEPOSIT 100 balance 100 date 2019-10-29T10:46\n";
 
         account.deposit(amount100);
 

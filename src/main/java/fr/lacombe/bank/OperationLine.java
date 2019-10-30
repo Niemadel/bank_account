@@ -1,6 +1,6 @@
 package fr.lacombe.bank;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class OperationLine {
@@ -8,9 +8,9 @@ public class OperationLine {
     private OperationType operationType;
     private Amount amount;
     private Amount balance;
-    private LocalDate operationDate;
+    private LocalDateTime operationDate;
 
-    public OperationLine(OperationType operationType, Amount amount, Amount balance, LocalDate operationDate) {
+    public OperationLine(OperationType operationType, Amount amount, Amount balance, LocalDateTime operationDate) {
         this.operationType = operationType;
         this.amount = amount;
         this.balance = balance;

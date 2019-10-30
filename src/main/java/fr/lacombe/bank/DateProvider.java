@@ -1,9 +1,9 @@
 package fr.lacombe.bank;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface DateProvider {
 
-    LocalDate date();
+    LocalDateTime date();
 
 }
